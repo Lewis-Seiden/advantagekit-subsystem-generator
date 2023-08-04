@@ -28,7 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
 				fs.mkdirSync(root + "\\" + name);
 			}
 			fs.writeFileSync(root + "\\" + name + "\\" + name + "Subsystem.java", 
-`package frc.robot.subsystenms.` + name + `;\n
+`package frc.robot.subsystems.` + name + `;\n
 import org.littletonrobotics.junction.Logger;\n
 import edu.wpi.first.wpilibj2.command.SubsystemBase;\n
 public class ` + name + `Subsystem extends SubsystemBase {
@@ -40,13 +40,13 @@ public class ` + name + `Subsystem extends SubsystemBase {
 	@Override
 	public void periodic() {
 		io.updateInputs(inputs);
-		Logger.getInstance().processInputs(` + name + `, inputs);
+		Logger.getInstance().processInputs(\"` + name + `\", inputs);
 	}
 }\n`
 			);
 			// Didnt realize you could do multiline strings like this at first so its a little jank
 			fs.writeFileSync(root + "\\" + name + "\\" + name + "IO.java", 
-`package frc.robot.subsystenms.` + name + `;\n
+`package frc.robot.subsystems.` + name + `;\n
 import org.littletonrobotics.junction.AutoLog; \n
 public interface ` + name + `IO {
 	@AutoLog
@@ -54,12 +54,12 @@ public interface ` + name + `IO {
 	public abstract void updateInputs(` + name + `IOInputs inputs);
 }`);
 			fs.writeFileSync(root + "\\" + name + "\\" + name + "IOSim.java", 
-`package frc.robot.subsystenms.` + name + `;\n
+`package frc.robot.subsystems.` + name + `;\n
 public class ` + name + `IOSim implements ` + name + `IO {
 	public ` + name + `IOSim() {}
 
 	@Override
-	public void updateInputs(` + name + `IO io) {}
+	public void updateInputs(` + name + `IOInputs ioInputs) {}
 }
 `);
 		});
