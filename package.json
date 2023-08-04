@@ -14,10 +14,6 @@
   "contributes": {
     "commands": [
       {
-        "command": "highlanders-advantagekit-subsystem-generator.helloWorld",
-        "title": "Hello World"
-      },
-      {
         "command": "highlanders-advantagekit-subsystem-generator.generateSubsystem",
         "title": "Generate Subsystem"
       }
