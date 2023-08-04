@@ -5,10 +5,8 @@ import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
 	let generate = vscode.commands.registerCommand('highlanders-advantagekit-subsystem-generator.generateSubsystem', () => {
-		let name = "default";
-		console.log("Waiting for name");
-		let namePromise = vscode.window.showInputBox().then((result) => {
-			name = result??"";
+		vscode.window.showInputBox({title: "Subsystem Name"}).then((result) => {
+			let name = result??"";
 			console.log("Got name " + name);
 			if (name === "") {
 				console.error('should enter a name');
